@@ -4,13 +4,16 @@ from flask_mongoengine import MongoEngine
 
 app = Flask(__name__)
 
-app.config['MONGODB_SETTINGS'] = {
-    'db': 'dbb_productos_app_mongoengine',
-    'host': 'mongodb+srv://JuanOchoa:ANA2000JUAN@cluster0.cof4rpm.mongodb.net/',
-    'port': 27017,
-}
+def connect_db(app):
+    app.config['MONGODB_SETTINGS'] = {
+        'db': 'dbb_productos_app_mongoengine',
+        'host': 'mongodb+srv://JuanOchoa:ANA2000JUAN@cluster0.cof4rpm.mongodb.net/dbb_productos_app_mongoengine?retryWrites=true&w=majority'
+    }
+    db = MongoEngine(app)
+    return db
+    
 
-db = MongoEngine(app)
+
 
 
 

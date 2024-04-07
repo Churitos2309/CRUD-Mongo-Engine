@@ -1,9 +1,9 @@
 from mongoengine import *
 
-class Usuaio(Document):
-    username = StringField(required=True, unique=True)
+class User(Document):
+    name = StringField(required=True)
+    email = StringField(required=True, unique=True)
     password = StringField(required=True)
-    correo = EmailField(required=True)
     
 class Categoria(Document):
     nombre = StringField(required=True, unique=True)

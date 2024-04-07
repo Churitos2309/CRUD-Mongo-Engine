@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
-from app import app, verificar_autenticacion  # Importa la instancia de la aplicación Flask desde el archivo app.py
+from app import app, verificar_autenticacion, db  # Importa la instancia de la aplicación Flask desde el archivo app.py
 # from userController import verificar_autenticacion
 import database as dbase  # Importa el modulo database como dbase
-from product import Product  # Importa la clase Product del modulo product
+from models  import Product  # Importa la clase Product del modulo product
 
 # Establece la conexion a la base de datos
 db = dbase

@@ -1,13 +1,13 @@
-from app import app,verificar_autenticacion  # Importa la instancia de la aplicación Flask desde el archivo app.py
+from app import app,db,verificar_autenticacion  # Importa la instancia de la aplicación Flask desde el archivo app.py
 from flask import Flask, request, redirect, url_for, render_template, session  # Importa las clases y funciones necesarias de Flask
 from bson import ObjectId  # Importa ObjectId de la biblioteca bson
 from functools import wraps  # Importa wraps desde functools para los decoradores
-import database as dbase  # Importa el modulo database como dbase
+from database import connect_db # Importa el modulo database como dbase
 
 # Establece la conexion a la base de datos
 # db = dbase.dbConnection()
-db = dbase
-usuarios_coleccion = db['usuarios']  # Obtiene la coleccion de usuarios
+db = connect_db()
+usuarios_coleccion = db.usuarios  # Obtiene la coleccion de usuarios
 
 
 
