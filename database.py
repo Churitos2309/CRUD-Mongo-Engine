@@ -1,16 +1,21 @@
 # from  mongoengine import *
 from flask import Flask
 from flask_mongoengine import MongoEngine
+from mongoengine import disconnect_all, connect
 
 app = Flask(__name__)
 
-def connect_db(app):
-    app.config['MONGODB_SETTINGS'] = {
-        'db': 'dbb_productos_app_mongoengine',
-        'host': 'mongodb+srv://JuanOchoa:ANA2000JUAN@cluster0.cof4rpm.mongodb.net/dbb_productos_app_mongoengine?retryWrites=true&w=majority'
-    }
-    db = MongoEngine(app)
-    return db
+
+def connect_db(app, alias=None):
+    disconnect_all()
+    connect(app.config['MONGODB_SETTINGS']['DB'], alias=alias)
+    return  connect(app.config['MONGODB_SETTINGS']['DB'], alias=alias)
+    # app.config['MONGODB_SETTINGS'] = {
+    #     'db': 'dbb_productos_app_mongoengine',
+    #     'host': 'mongodb+srv://JuanOchoa:ANA2000JUAN@cluster0.cof4rpm.mongodb.net/dbb_productos_app_mongoengine?retryWrites=true&w=majority'
+    # }
+    # db = MongoEngine(app)
+    # return db
     
 
 
